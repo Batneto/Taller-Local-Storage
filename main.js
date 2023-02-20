@@ -1,47 +1,70 @@
+const frutasAPintar = [
+  {
+    id: 1,
+    nombre: "pera",
+  },
+  {
+    id: 2,
+    nombre: "Kiwi",
+  },
+];
 
+const arrayProductos = [];
 
-//todo Variables
+const pintarTabla = () => {
+  frutasAPintar.forEach((item) => {
+    const fila = document.createElement("TR");
 
+    fila.innerHTML = `<td id=${item.id}>${item.nombre}</td> 
+                        <td><button class="add" data-id=${item.id}>añadir</button></td> 
+                        <td><button class="remove" data-id=${item.id}>eliminar</button></td>`;
+    tabla.append(fila);
+  });
+};
 
-let listaCompra=[];
-let botonPera=document.querySelector('#pushPera')
-let deletePera=document.querySelector('#deletePera')
-// localStorage.setItem("frutas",listaCompra);
-let cont=0
+const lista = document.querySelector("#lista");
+pintarTabla();
 
+const botonAñadir = document.querySelectorAll(".add");
+const botonEliminar = document.querySelectorAll(".remove");
 
-//todo Eventos
+console.log(botonAñadir);
 
-botonPera.addEventListener('click',({target})=>{
-    if(eval.target.matches(.add))
-    const elemento=ev.target.parentelement.parentelement.child[0],id
-    const id=ev.target.getAtribute("data-id")
-    pushpera()
+botonAñadir.forEach((item) => {
+  item.addEventListener("click", () => {
+    pintarEnlista();
+    idproducto();
+  });
 });
-deletePera.addEventListener('click',()=>{
-    quitarPera()
-});
+//
 
+const pintarEnlista = () => {
+  frutasAPintar.forEach(({ id, nombre }) => {
+    lista.innerHTML += `<li id=${id}>${nombre}</li>`;
+  });
+};
+console.log(arrayProductos);
 
-
-
-//todo Funciones 
-
-function pushpera(){
-    listaCompra.push("pera")
-}
-
-function quitarPera() {
-    
-}
-
-
-
-console.log(listaCompra);
+const pintararrayProductos = () => {
+  frutasAPintar.forEach(({ id, nombre }) => {
+    lista.innerHTML = `<li id=${id}>${nombre}</li>`;
+  });
+};
 
 
 
 
 
-
-
+// const idproducto = (id) => {
+//   const producto = frutasAPintar.find((item) => item.id == id);
+//   console.log(producto);
+// };
+// botonAñadir.addEventListener('click',()=>{
+//     console.log("hola");
+// });
+// lista.addEventListener(`click`, ({ target }) => {
+//   if (target.matches("")) {
+//     const id = target.id;
+//     mostrarElemento(id);
+//   }
+// });
